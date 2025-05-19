@@ -61,3 +61,27 @@ while running:
             
     spawn_twice_chance += 0.01
     spawn_interval = spawn_interval * obstacle_multiplier
+    
+    # Rörelse
+    keys = pygame.key.get_pressed()
+    speed_multiplier = 0.5
+    if keys[pygame.K_LSHIFT]:
+        speed_multiplier = 1
+
+    if keys[pygame.K_LEFT] and player_x > 0:
+        player_x -= player_speed * speed_multiplier
+    if keys[pygame.K_RIGHT] and player_x < WIDTH - player_size:
+        player_x += player_speed * speed_multiplier
+    if keys[pygame.K_UP] and player_y > 0:
+        player_y -= player_speed * speed_multiplier
+    if keys[pygame.K_DOWN] and player_y < HEIGHT - player_size:
+        player_y += player_speed * speed_multiplier
+    
+    if keys[pygame.K_a] and player_x > 0:
+        player_x -= player_speed * speed_multiplier
+    if keys[pygame.K_d] and player_x < WIDTH - player_size:
+        player_x += player_speed * speed_multiplier
+    if keys[pygame.K_w] and player_y > 0:
+        player_y -= player_speed * speed_multiplier
+    if keys[pygame.K_s] and player_y < HEIGHT - player_size:
+        player_y += player_speed * speed_multiplier
