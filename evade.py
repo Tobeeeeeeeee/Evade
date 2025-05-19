@@ -85,3 +85,27 @@ while running:
         player_y -= player_speed * speed_multiplier
     if keys[pygame.K_s] and player_y < HEIGHT - player_size:
         player_y += player_speed * speed_multiplier
+ # Kolla om spelaren rör vid sidokanterna
+    if player_x <= 0 or player_x + player_size >= WIDTH:
+        print("Game Over! Du rörde kanten. Poäng:", score)
+        pygame.quit()
+        sys.exit()
+
+    # Flytta hinder och kolla om de lämnar skärmen
+    new_obstacles = []
+    for obstacle in obstacles:
+        obstacle[1] += obstacle_base_speed + obstacle_multiplier * (score + 1)
+        if obstacle[1] > HEIGHT:
+            score += 1
+        else:
+            new_obstacles.append(obstacle)
+    obstacles = new_obstacles
+
+    # Kollision
+    player_rect = pygame.Rect(player_x, player_y, player_size, player_size)
+    for obstacle in obstacles:
+        obstacle_rect = pygame.Rect(obstacle[0], obstacle[1], obstacle_size, obstacle_size)
+        if player_rect.colliderect(obstacle_rect):
+            print("Game Over! Poäng:", score)
+            pygame.quit()
+            sys.exit()
