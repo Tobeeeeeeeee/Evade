@@ -109,3 +109,13 @@ while running:
             print("Game Over! Poäng:", score)
             pygame.quit()
             sys.exit()
+# Rita
+    win.fill(DARK_BG)
+    pygame.draw.rect(win, LIME_GREEN, player_rect)
+    for obstacle in obstacles:
+        pygame.draw.rect(win, PINK, (obstacle[0], obstacle[1], obstacle_size, obstacle_size))
+    score_text = font.render(f"Poäng: {score}", True, BLACK)
+    win.blit(score_text, (10, 10))
+    pygame.display.flip()
+
+pygame.quit()
