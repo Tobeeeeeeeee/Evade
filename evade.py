@@ -35,3 +35,29 @@ SPAWN_EVENT = pygame.USEREVENT + 1
 spawn_interval = 300
 spawn_twice_chance = 0.01
 pygame.time.set_timer(SPAWN_EVENT, spawn_interval)
+
+# Poäng
+score = 0
+font = pygame.font.SysFont(None, 36)
+
+# Spelloop
+clock = pygame.time.Clock()
+running = True
+while running:
+    clock.tick(60)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == SPAWN_EVENT:    
+            # Skapa nytt hinder
+            x = random.randint(0, WIDTH - obstacle_size)
+            y = -obstacle_size
+            obstacles.append([x, y])
+            if random.random() < spawn_twice_chance:
+                x = random.randint(0, WIDTH - obstacle_size)
+                y = -obstacle_size
+                obstacles.append([x, y])
+                spawn_twice_chance -= 0.5
+            
+    spawn_twice_chance += 0.01
+    spawn_interval = spawn_interval * obstacle_multiplier
