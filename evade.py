@@ -60,7 +60,7 @@ while running:
                 spawn_twice_chance -= 0.5
             
     spawn_twice_chance += 0.01
-    spawn_interval = spawn_interval * obstacle_multiplier
+    spawn_interval = spawn_interval/4 ** obstacle_multiplier
     
     # Rörelse
     keys = pygame.key.get_pressed()
