@@ -21,3 +21,17 @@ player_size = 25
 player_x = WIDTH // 2 - player_size // 2
 player_y = HEIGHT - player_size - 50
 player_speed = 5
+
+# Hinder
+obstacle_size = 40
+obstacle_base_speed = 2
+obstacle_multiplier = 0.05
+
+# Lista för hinder
+obstacles = []
+
+# Spawn-timer
+SPAWN_EVENT = pygame.USEREVENT + 1
+spawn_interval = 300
+spawn_twice_chance = 0.01
+pygame.time.set_timer(SPAWN_EVENT, spawn_interval)
